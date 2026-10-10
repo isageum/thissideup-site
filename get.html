@@ -1,0 +1,69 @@
+<!doctype html>
+<!--
+  서류(PDF)와 사진 묶음(ZIP)의 QR이 가리키는 단 하나의 주소: thissideup.app/get (src/links.ts GET_URL).
+  ⚠️ 이 파일 이름과 주소는 바꾸지 않는다. 이미 고객 메일함과 종이에 나간 QR을 고칠 수 없다(docs/maker_layer_build_1_2.md 1.2절).
+  기기를 보고 맞는 스토어로 보낸다: iPhone(과 UA에 iPad가 남는 옛 iPad)은 App Store로 바로 넘기고, 그 밖(안드로이드, PC, 그리고 기본 설정의
+  iPadOS 13 이상은 Mac 브라우저로 신고하므로 넘어가지 않는다)은 이 페이지에서 한 번 눌러 간다. 링크가 화면에 있으니 어느 쪽도 막다른 길은 아니다.
+  안드로이드가 Google Play에 공개되면 아래 PLAY 주소를 채우고 다시 배포한다. 앱은 다시 낼 필요가 없다. 그것이 이 주소가 고정인 이유다.
+  코드 쪽 규율을 여기로 옮겼다(헌법 §2.3 새 매체): 중립어(보내는 쪽과 받는 쪽 둘 다), 결과를 약속하는 문장 없음(claimPromises 그물이
+  web/*.html을 읽는다), 긴 줄표와 가운뎃점 없음. 주소와 파일의 일치는 src/__tests__/storeReviewLinks.test.ts가 센다.
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Get This Side Up</title>
+    <meta
+      name="description"
+      content="This Side Up keeps photo proof of the things you ship, receive, or take in for repair. Free to start. Your photos stay on your phone, and the app never uploads them."
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <header>
+        <a class="brand" href="./">This Side Up</a>
+        <p class="tagline">Photo proof for the boxes you ship and the ones you open.</p>
+      </header>
+
+      <h1>Get the app</h1>
+      <p class="lead">
+        If someone sent you a PDF or photos made with This Side Up, this is the app they used. It keeps
+        photo proof of the things you ship, receive, or take in for repair, and turns it into a PDF or
+        ZIP like the one you got.
+      </p>
+
+      <div class="card">
+        <p>
+          <strong>iPhone and iPad:</strong>
+          <a id="appstore" href="https://apps.apple.com/us/app/this-side-up/id6806478365">Open in the App Store</a>
+        </p>
+        <p>
+          <strong>Android:</strong> coming soon. Want to try it before launch? Email
+          <a href="mailto:support@thissideup.app">support@thissideup.app</a>.
+        </p>
+      </div>
+
+      <p>
+        Free to start. See <a href="./#free-and-paid">what's free and what's paid</a>. No account, no server. The app
+        keeps your photos on your phone and never uploads them.
+      </p>
+
+      <footer>
+        <a href="./">Home</a><a href="./privacy.html">Privacy</a><a href="./terms.html">Terms</a>
+      </footer>
+    </div>
+    <script>
+      // iPhone과 iPad는 바로 App Store로. 안드로이드는 Play에 공개되기 전까지 이 페이지에 머문다(위 주석).
+      (function () {
+        var ua = navigator.userAgent || '';
+        var PLAY = '';
+        if (/android/i.test(ua) && PLAY) {
+          location.replace(PLAY);
+        } else if (/iphone|ipad|ipod/i.test(ua)) {
+          location.replace(document.getElementById('appstore').href);
+        }
+      })();
+    </script>
+  </body>
+</html>
